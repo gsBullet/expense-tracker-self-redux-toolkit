@@ -2,27 +2,21 @@
   "transactions": [
     {
       "name": "salary from fb",
-      "amount": "234",
+      "amount": 500,
       "type": "income",
-      "id": 4
+      "id": 1
     },
     {
-      "name": "salary from tyoutube",
-      "amount": "5000",
+      "name": "salary",
+      "amount": 20000,
+      "type": "income",
+      "id": 2
+    },
+    {
+      "name": "Family Expenses",
+      "amount": 50000,
       "type": "expense",
-      "id": 5
-    },
-    {
-      "name": "salary from tyoutube",
-      "amount": "5000",
-      "type": "income",
-      "id": 6
-    },
-    {
-      "name": "salary from tyoutube",
-      "amount": "5000",
-      "type": "income",
-      "id": 7
+      "id": 3
     }
   ]
 }

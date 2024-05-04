@@ -13,10 +13,13 @@ function Form() {
   const [editMode, setEditMode] = useState(false);
   const dispatch = useDispatch();
 
-  const editingActions = useSelector((state) => state.transaction.editing || {})  ;
+  const editingActions = useSelector(
+    (state) => state.transaction.editing || {}
+  );
+  const { isLoading, isError } = useSelector((state) => state.transaction);
 
   useEffect(() => {
-    const { id, name, amount, type } = editingActions
+    const { id, name, amount, type } = editingActions;
     if (id) {
       setInput(name);
       setAmountIncome(amount);
@@ -38,7 +41,7 @@ function Form() {
     dispatch(
       createTransactions({
         name: input,
-        amount: amountIncome,
+        amount: Number(amountIncome),
         type,
       })
     );
@@ -52,7 +55,7 @@ function Form() {
         id: editingActions?.id,
         data: {
           name: input,
-          amount: amountIncome,
+          amount: Number(amountIncome),
           type,
         },
       })
@@ -61,11 +64,11 @@ function Form() {
     setEditMode(false);
   };
 
-  const cancelEditing =()=>{
-    dispatch(editInActive)
+  const cancelEditing = () => {
+    dispatch(editInActive);
     setEditMode(false);
-    reset()
-  }
+    reset();
+  };
   return (
     <>
       {editMode ? (
@@ -120,11 +123,14 @@ function Form() {
               />
             </div>
 
-            <button type="submit" className="btn">
-              Update Transaction
+            <button type="submit" disabled={isLoading} className="btn">
+              Add Transaction
             </button>
+            {!isLoading && isError &&(<p className="error"> An Error Occured</p>)}
 
-            <button className="btn cancel_edit" onClick={cancelEditing}>Cancel Edit</button>
+            <button className="btn cancel_edit" onClick={cancelEditing}>
+              Cancel Edit
+            </button>
           </form>
         </div>
       ) : (
@@ -143,7 +149,7 @@ function Form() {
             </div>
 
             <div className="form-group radio">
-              <label for="type">Type</label>
+              <label htmlFor="type">Type</label>
               <div className="radio_group">
                 <input
                   type="radio"
@@ -179,11 +185,10 @@ function Form() {
               />
             </div>
 
-            <button type="submit" className="btn">
+            <button type="submit" disabled={isLoading} className="btn">
               Add Transaction
             </button>
-
-            
+            {!isLoading && isError && (<p className="error"> An Error Occured</p>)}
           </form>
         </div>
       )}
