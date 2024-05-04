@@ -1,0 +1,28 @@
+{
+  "transactions": [
+    {
+      "name": "salary from fb",
+      "amount": "234",
+      "type": "income",
+      "id": 4
+    },
+    {
+      "name": "salary from tyoutube",
+      "amount": "5000",
+      "type": "expense",
+      "id": 5
+    },
+    {
+      "name": "salary from tyoutube",
+      "amount": "5000",
+      "type": "income",
+      "id": 6
+    },
+    {
+      "name": "salary from tyoutube",
+      "amount": "5000",
+      "type": "income",
+      "id": 7
+    }
+  ]
+}
